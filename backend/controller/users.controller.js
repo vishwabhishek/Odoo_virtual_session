@@ -1,4 +1,4 @@
-import User from "../Schemas/user.schema.js";
+import {User,Skill } from "../Schemas/user.schema.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -58,6 +58,34 @@ export const loginUser = async (req, res)=>{
     } catch (error) {
         console.log("error in the login")
         return res.status(500).json({message:"error in the login"})
+    }
+}
+
+export const addSkill = async (req,res)=>{
+    try {
+        const skills = req.body;
+        if (!Array.isArray(skills) || skills.length === 0) {
+            return res.status(400).json({ msg: 'Skills must be a non-empty array' });
+        }
+
+        for (const skill of skills) {
+            if (!skill.name || typeof skill.name !== 'string') {
+                return res.status(400).json({ msg: 'Each skill must have a valid name' });
+            }
+        }
+        const skillDocs = skills.map(skill => ({
+      user: req.userId,
+      name: skill.name,
+      description: skill.description || '',
+      level: skill.level || 'Beginner'
+    }));
+
+    const savedSkills = await Skill.insertMany(skillDocs);
+    res.status(201).json(savedSkills);
+    } catch (error) {
+        console.log("error in adding the skill")
+        return res.status(500).json({message:"error in adding the skill"})
+
     }
 }
 
