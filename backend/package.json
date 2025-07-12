@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "nodemon index.js"
   },
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.2.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3"
   }
 }
