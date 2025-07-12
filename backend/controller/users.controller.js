@@ -73,15 +73,15 @@ export const addSkill = async (req,res)=>{
                 return res.status(400).json({ msg: 'Each skill must have a valid name' });
             }
         }
+        const userId = await User.findOne({username: req.username})
         const skillDocs = skills.map(skill => ({
-      user: req.userId,
-      name: skill.name,
-      description: skill.description || '',
-      level: skill.level || 'Beginner'
-    }));
-
-    const savedSkills = await Skill.insertMany(skillDocs);
-    res.status(201).json(savedSkills);
+            user: userId,
+            name: skill.name,
+            description: skill.description || '',
+            level: skill.level || 'Beginner'
+        }));
+        const savedSkills = await Skill.insertMany(skillDocs);
+        return res.status(201).json({message:"skill saved successfully"});
     } catch (error) {
         console.log("error in adding the skill")
         return res.status(500).json({message:"error in adding the skill"})
