@@ -1,0 +1,103 @@
+.settings {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 10px;
+  background: hsl(var(--background));
+}
+
+.settings h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.settings-form {
+  max-width: 700px;
+  width: 100%;
+  background: hsl(var(--card));
+  padding: 40px 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  margin: 0 auto;
+}
+
+.form-section {
+  margin-bottom: 30px;
+}
+
+.form-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid hsl(var(--border));
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsla(var(--primary), 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.save-btn {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.save-btn:hover {
+  background: hsl(var(--accent));
+}
+
+@media (max-width: 768px) {
+  .settings {
+    padding: 10px;
+  }
+  
+  .settings-form {
+    padding: 20px;
+  }
+}

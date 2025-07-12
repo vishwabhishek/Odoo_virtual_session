@@ -1,0 +1,71 @@
+.reports-logs {
+  padding: 20px;
+}
+
+.reports-logs h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 20px;
+}
+
+.download-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 20px;
+}
+
+.download-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.download-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.download-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 10px 0;
+}
+
+.download-card p {
+  color: #718096;
+  margin: 0 0 15px 0;
+  font-size: 14px;
+}
+
+.download-btn {
+  background: #3182ce;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.download-btn:hover {
+  background: #2c5282;
+}
+
+@media (max-width: 768px) {
+  .reports-logs {
+    padding: 10px;
+  }
+  
+  .download-options {
+    grid-template-columns: 1fr;
+  }
+}
