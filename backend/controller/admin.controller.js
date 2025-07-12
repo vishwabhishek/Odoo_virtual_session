@@ -1,5 +1,6 @@
 import Admin from "../Schemas/admin.schema.js";
 import jwt from "jsonwebtoken";
+import {User} from "../Schemas/user.schema.js";
 
 export const adminLogin = async (req, res) =>{
     try {
@@ -23,5 +24,24 @@ export const adminLogin = async (req, res) =>{
     } catch (error) {
         console.log("error in the admin login");
         return res.status(500).json({message:"error in the admin login"});
+    }
+}
+
+export const banUser = async (req,res)=>{
+    try {
+        const { banned } = req.body; 
+
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { banned },
+      { new: true }
+    );
+
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    return res.json({ message: banned ? 'User banned' : 'User unbanned', user });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({message: 'Server error' });
     }
 }

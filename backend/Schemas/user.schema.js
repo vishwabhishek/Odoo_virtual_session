@@ -14,7 +14,11 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true
-    }
+    },
+    banned: {                        
+    type: Boolean,
+    default: false
+  }
 })
 
 const skillSchema = new mongoose.Schema({
@@ -50,6 +54,17 @@ const collabRequestSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  projectName: {
+    type: String,
+    required: true,
+  },
+  projectDescription: {
+    type: String,
+    required: true,
+  },
+  requiredSkills: [{
+    type: String
+  }],
   message: {
     type: String,
     default: '',
