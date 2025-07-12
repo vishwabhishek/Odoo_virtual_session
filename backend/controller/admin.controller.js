@@ -1,4 +1,4 @@
-import Admin from "../Schemas/admin.schema.js";
+import {Admin, Announcement} from "../Schemas/admin.schema.js";
 import jwt from "jsonwebtoken";
 import {User} from "../Schemas/user.schema.js";
 
@@ -43,5 +43,27 @@ export const banUser = async (req,res)=>{
     } catch (error) {
         console.error(error);
         return res.status(500).json({message: 'Server error' });
+    }
+}
+
+export const accounce= async (req,res)=>{
+    try {
+        const { title, message, type } = req.body;
+
+    if (!title || !message) {
+      return res.status(400).json({ message: 'Title and message are required' });
+    }
+
+    const announcement = new Announcement({
+      title,
+      message,
+      type
+    });
+
+    await announcement.save();
+    return res.status(201).json({ message: 'Announcement sent', announcement });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
     }
 }
